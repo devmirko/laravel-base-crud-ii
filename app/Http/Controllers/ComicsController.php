@@ -87,9 +87,14 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        // prendiamo la richiesta del form e la inseriamo in una variabile
+        $formData = $request->all();
+        // modifichiamo l'oggetto con la nuova richiesta
+        $comic->update($formData); //(se abbiamo definito $fillable nel model)
+        // reindirizziamo la pagina a  mostra dettaggli fumetto(show)
+        return redirect()->route('comics.show', ['comic' => $comic]);
     }
 
     /**
@@ -98,8 +103,10 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }

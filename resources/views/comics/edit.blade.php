@@ -6,7 +6,9 @@
 
 
 {{-- impostiamo la route del form ad update --}}
-<form action="{{ route('comics.update') }}" method="post">
+<form action="{{ route('comics.update', ['comic' => $comic ] ) }}" method="post">
+    {{-- inseriamo il metodo put che si aggiungera al metodo post --}}
+    @method('put')
     @csrf
     <div class="mb-3">
         <label class="form-label" for="id">id</label>
