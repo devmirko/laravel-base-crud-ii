@@ -36,6 +36,17 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
+        // validazione dei dati
+        $request->validate([
+            'id'      => 'required|',
+            'title'     => 'required|string|max:50',
+            'description'    => 'required|string|max:200',
+            'price'   => 'required|string|max:10',
+            'series' => 'required|string|max:20',
+            'sale_date'     => 'required|date',
+            'type'   => 'required|string|max:20',
+        ]);
+
         $formData = $request->all();
 
 
@@ -47,7 +58,7 @@ class ComicsController extends Controller
         $comics->series = $formData['series'];
         $comics->sale_date = $formData['sale_date'];
         $comics->type = $formData['type'];
-        // TODO: validare i dati prima di inviarli al database
+
         $comics->save();
 
         // TODO: reindirizzare la pagina alla home,
