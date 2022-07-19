@@ -18,12 +18,9 @@
                   comics
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">List</a></li>
-                  <li><a class="dropdown-item" href="#">New</a></li>
+                  <li><a class="dropdown-item" href="{{ route('comics.index') }}">List</a></li>
+                  <li><a class="dropdown-item" href="{{ route('comics.create') }}">New</a></li>
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
             <form class="d-flex">

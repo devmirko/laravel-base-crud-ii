@@ -1,7 +1,7 @@
 @extends('comics.base')
 
 @section('mainContent')
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
@@ -11,6 +11,7 @@
             <th>series</th>
             <th>sale_date</th>
             <th>type</th>
+            <th colspan="3">Action</th>
 
         </tr>
     </thead>
@@ -24,6 +25,15 @@
                 <td>{{ $comic->series }}</td>
                 <td>{{ $comic->sale_date }}</td>
                 <td>{{ $comic->type }}</td>
+                <td>
+                    <a href="{{ route('comics.show', ['comic' => $comic]) }}" class="btn btn-primary">View</a>
+                </td>
+                <td>
+                    <a href="{{ route('comics.edit', ['comic' => $comic]) }}" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         @endforeach
     </tbody>
